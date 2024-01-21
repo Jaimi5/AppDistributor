@@ -1,6 +1,6 @@
-# LoRaChat Firmware
+# AppDistributor Firmware
 
-LoRaChat Firmware is a versatile communication system that utilizes LoRa technology and ESP32 LoRa boards to facilitate long-distance communication. With the convenience of a Bluetooth Serial Terminal, you can easily connect to your devices through your phone. Our implementation includes MQTT support, allowing for communication between the device and the LoRaChat Firmware system.
+AppDistributor Firmware is a versatile communication system that utilizes LoRa technology and ESP32 LoRa boards to facilitate long-distance communication. With the convenience of a Bluetooth Serial Terminal, you can easily connect to your devices through your phone. Our implementation includes MQTT support, allowing for communication between the device and the LoRaChat Firmware system.
 
 We are using the [LoRaMesher](https://github.com/LoRaMesher/LoRaMesher), which implements a LoRa Mesh communication protocol to establish routing tables and contact lists. This protocol allows our system to dynamically adjust to changes in the network topology, ensuring reliable communication over long distances. Additionally, our system supports large messages thanks to the LargePayloads feature, enabling you to transmit data of any size with ease.
 
