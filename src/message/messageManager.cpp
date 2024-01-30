@@ -140,6 +140,12 @@ void MessageManager::processReceivedMessage(messagePort port, DataMessage* messa
         return;
     }
 
+    if (message->toMqttServer) {
+        ESP_LOGI(MANAGER_TAG, "Message to MQTT server received, relaying it");
+        sendMessageMqtt(message);
+        return;
+    }
+
     for (auto service : services) {
         if (service->serviceId == message->appPortDst) {
             service->processReceivedMessage(port, message);
@@ -177,6 +183,10 @@ void MessageManager::sendMessageMqtt(DataMessage* message) {
         ESP_LOGI(MANAGER_TAG, "Message sent to MQTT");
         return;
     }
+
+    // Could not send to MQTT server, send to another node who can
+    message->toMqttServer = 1;
+    ESP_LOGI(MANAGER_TAG, "Message could not be sent to MQTT server, sending through LoRaMesher");
 
     LoRaMeshService& mesher = LoRaMeshService::getInstance();
     mesher.sendClosestGateway(message);

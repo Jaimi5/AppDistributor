@@ -41,6 +41,8 @@ public:
     uint16_t addrSrc;
     uint16_t addrDst;
 
+    uint8_t toMqttServer = false;
+
     uint32_t messageSize; //Message Size of the payload no include header
 
     virtual ~DataMessageGeneric() {
@@ -58,6 +60,7 @@ public:
         doc["addrSrc"] = addrSrc;
         doc["addrDst"] = addrDst;
         doc["messageSize"] = messageSize;
+        doc["toMqttServer"] = toMqttServer;
     }
 
     void deserialize(JsonObject& doc) {
@@ -67,6 +70,7 @@ public:
         addrSrc = doc["addrSrc"];
         addrDst = doc["addrDst"];
         messageSize = doc["messageSize"];
+        toMqttServer = doc["toMqttServer"];
     }
 };
 
